@@ -19,7 +19,7 @@ public class UberShop {
     }
 
     /*public int[] findMinMaxPrices(int[] prices) {
-    // Не дуже добре написаний код особливо якщо доведеться перевіряти великі масиви
+        // Не дуже добре написаний код особливо якщо доведеться перевіряти великі масиви
         Arrays.sort(prices);
         if (prices.length == 0) {
             return new int[] {};
@@ -54,6 +54,26 @@ public class UberShop {
         }
     }
 
+    public int getMinPriceCount(int[] prices) {
+        if (prices == null || prices.length == 0) {
+            return 0;
+        }
+
+        int minPrice = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];
+            }
+        }
+        int samePricesCount = 0;
+        for (int price : prices) {
+            if (price == minPrice) {
+                samePricesCount++;
+            }
+        }
+        return samePricesCount;
+    }
+
     public static void main(String[] args) {
         UberShop shop = new UberShop();
 
@@ -70,5 +90,12 @@ public class UberShop {
         int[] prices2 = new int[] {100, 1500, 300, 50};
         int[] minMax = shop.findMinMaxPrices(prices2);
         System.out.println(Arrays.toString(minMax));
+
+        //Should be [50, 1500]
+        int[] prices3 = new int[] {100, 1500, 300, 50, 10, 10, 70};
+        System.out.println(shop.getMinPriceCount(prices3)); //Should be 2
+
+        //Should be 5
+        System.out.println(shop.getMinPriceCount(new int[]{9, 10, 10, 11, 9, 11, 11, 10, 9, 9, 9, 11, 12}));
     }
 }
