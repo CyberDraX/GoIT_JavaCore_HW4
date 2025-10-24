@@ -18,7 +18,8 @@ public class UberShop {
         }
     }
 
-    public int[] findMinMaxPrices(int[] prices) {
+    /*public int[] findMinMaxPrices(int[] prices) {
+    // Не дуже добре написаний код особливо якщо доведеться перевіряти великі масиви
         Arrays.sort(prices);
         if (prices.length == 0) {
             return new int[] {};
@@ -26,6 +27,30 @@ public class UberShop {
             return new int[] {prices[0]};
         } else {
             return new int[] {prices[0], prices[prices.length -1]};
+        }
+    }*/
+
+    public int[] findMinMaxPrices(int[] prices) {
+        // - Без сортування: швидше на великих масивах.
+        // - Менше пам’яті: не змінює вхідний масив.
+        if (prices == null || prices.length == 0) {
+            return new int[] {};
+        }
+
+        int min = prices[0];
+        int max = prices[0];
+
+        for (int price : prices) {
+            if (price < min) min = price;
+            if (price > max) max = price;
+        }
+
+        if (min == 0) {
+            return new int[] {};
+        } else if (min == max) {
+            return new int[] {min};
+        } else {
+            return new int[] {min, max};
         }
     }
 
