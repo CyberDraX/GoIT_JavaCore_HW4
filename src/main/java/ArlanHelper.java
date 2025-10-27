@@ -45,22 +45,40 @@ public class ArlanHelper {
         return line.toString();
     }
 
+    public String drawPattern(char[] pattern, int repeatCount) {
+        StringBuilder line = new StringBuilder();
+
+        while (repeatCount > 0) {
+            int i = 0;
+            while (i < pattern.length) {
+                line.append(pattern[i]);
+                i++;
+            }
+            repeatCount--;
+        }
+        return line.toString();
+    }
+
     public static void main(String[] args) {
         ArlanHelper helper = new ArlanHelper();
 
-//        //Should be:
-//        //**
-//        //**
-//        System.out.println(helper.drawQuad(2));
-//
-//        //Should be:
-//        //XX
-//        //XX
-//        //XX
-//        System.out.println(helper.drawRect(2, 3, 'X'));
+        //Should be:
+        //**
+        //**
+        System.out.println(helper.drawQuad(2));
+
+        //Should be:
+        //XX
+        //XX
+        //XX
+        System.out.println(helper.drawRect(2, 3, 'X'));
 
         //Should be:
         //*#*#*
         System.out.println(helper.drawLine(5));
+
+        //Should be:
+        //JavaJavaJava
+        System.out.println(helper.drawPattern(new char[] {'J', 'a', 'v', 'a'}, 3));
     }
 }
