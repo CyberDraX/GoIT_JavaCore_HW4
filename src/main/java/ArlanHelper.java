@@ -32,18 +32,35 @@ public class ArlanHelper {
         return charLine;
     }
 
+    public String drawLine(int length) {
+        StringBuilder line = new StringBuilder();
+
+        int count = 0;
+        while (count < length) {
+            if (count % 2 == 0) {
+                line.append("*");
+            }  else line.append("#");
+            count++;
+        }
+        return line.toString();
+    }
+
     public static void main(String[] args) {
         ArlanHelper helper = new ArlanHelper();
 
-        //Should be:
-        //**
-        //**
-        System.out.println(helper.drawQuad(2));
+//        //Should be:
+//        //**
+//        //**
+//        System.out.println(helper.drawQuad(2));
+//
+//        //Should be:
+//        //XX
+//        //XX
+//        //XX
+//        System.out.println(helper.drawRect(2, 3, 'X'));
 
         //Should be:
-        //XX
-        //XX
-        //XX
-        System.out.println(helper.drawRect(2, 3, 'X'));
+        //*#*#*
+        System.out.println(helper.drawLine(5));
     }
 }
